@@ -351,3 +351,10 @@ v1 文件保留不删。
 `REPRODUCE.md`、`reproduce_scripts/01_resolve_coordinates.py`。
 
 **不自行宣布 P0-2/P0 整批通过**，等待 ChatGPT 复核。
+
+
+### K3. ChatGPT 独立复核 P0-2 v3
+
+| 文件 | 类型 | 状态与用途 |
+|---|---|---|
+| `05_deliverables/integration_review/ChatGPT独立验收_P0-2_v3_20261017.md` | Markdown | 独立验收报告。P0-2 v3 必修项通过；核心计数与 340 条分类复算通过；提出非阻塞的汇总措辞与审计字段增强建议。 |
