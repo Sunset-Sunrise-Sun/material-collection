@@ -131,15 +131,24 @@ ROWS = []
 for r in geo:
     pid = r["place_id"]
     addr = r["canonical_address"]
+    # === v3 修复（2026-10-17）===
+    # 原缺陷：n / lvl / ver 在下方坐标解析之后才赋值，导致坐标异常的 except 分支
+    #           读取到**上一行**的值（如 P-45b4cccd 继承了 P-68e159ad 的
+    #           原n_candidates=1 / 原level=住宅区）。
+    # 修复：三个原始字段一律先从**当前记录 r** 初始化；API 缺失即保持缺失，不归一化为 1。
+    _n_raw = (r.get("n_candidates") or "").strip()
+    n = int(_n_raw) if _n_raw.isdigit() else 0
+    lvl = (r.get("level") or "")
+    ver = (r.get("verified") or "")
     try:
         lng_w, lat_w = float(r["lng_wgs84"]), float(r["lat_wgs84"])
         lng_g, lat_g = float(r["lng_gcj02"]), float(r["lat_gcj02"])
     except (ValueError, TypeError):
-        # 无有效坐标：直接登记为待核，不做推断
+        # 无有效坐标：直接登记为待核，不做推断；**不读取任何上行状态**
         ROWS.append({
             "place_id": pid, "canonical_address": addr,
             "原verdict": r["verdict"], "原verified": ver,
-            "原n_candidates": n, "原level": lvl,
+            "原n_candidates": _n_raw, "原level": lvl,
             "E1_坐标落面_WGS": "", "E2_GCJ列转WGS后落面": "",
             "E3_地址文本街道": "", "E4_返回道路名": r.get("street", ""),
             "E5_名录街道归属": "", "E6_层级质量": 0, "人工复核标记": "",
@@ -149,9 +158,7 @@ for r in geo:
             "修订日期": TODAY, "修订来源": "阶段2多证据批量核验（E1-E6）",
         })
         continue
-    n = int(r["n_candidates"] or 0)
-    lvl = r["level"]
-    ver = r.get("verified", "")
+    # n / lvl / ver 已在循环开头从当前 r 初始化（v3 修复）
 
     # E1/E2 点面判定（双假设）
     e1 = street_of(lng_w, lat_w, S_WGS)
