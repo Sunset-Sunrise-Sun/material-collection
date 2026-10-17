@@ -319,3 +319,12 @@
 新增文件：逐行交叉表 v2、汇总表 v2、修订说明（含新旧 SHA、逐行差异、数据字典）、
 REPRODUCE 勘误修订版、断言 v2（25 项全通过）、2 个复现脚本。
 v1 文件保留不删。
+
+
+### K2. ChatGPT 独立复核 P0-2 v2 与后续修订交接
+
+| 文件 | 类型 | 状态与用途 |
+|---|---|---|
+| `05_deliverables/integration_review/ChatGPT独立验收_P0-2_v2_20261017.md` | Markdown | v2 独立复核。核心分类与计数通过；P0-2 暂不关闭，需修复 P-45b4cccd 原始候选字段来源、G3c/G4 断言、米级分析坐标系门槛与 REPRODUCE 勘误指针。 |
+| `04_handoff/20261017_deepseek_p0_2_v3_followup.md` | Markdown | v3 定向修订任务；保留 v1/v2，不重做 GIS，不改分类或冻结评价框架。 |
+
