@@ -218,3 +218,10 @@
 |---|---|---|
 | `04_handoff/20261017_deepseek_p0_reconciliation.md` | Markdown | 已归档；要求核实阶段二原件日期/哈希、海珠坐标分层计数和“平安通”采购预算口径。 |
 
+
+
+### J2. 新 ChatGPT 官方补证交接
+
+| 文件 | 类型 | 状态与用途 |
+|---|---|---|
+| `04_handoff/20261017_new_chatgpt_official_search_prompt.md` | Markdown | 已归档；只针对平安通官方公告/合同、2025 智慧养老需求清单、AI+养老专项清单、SMART/惠记忆、文冲新村运行证据开展定向补证。 |
