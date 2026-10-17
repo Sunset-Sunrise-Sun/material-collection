@@ -292,3 +292,11 @@
 | `05_deliverables/integration_review/ChatGPT独立验收_P0_20261017.md` | Markdown | 独立 Review。P0-1 与 P0-3 通过（附限定）；P0-2 有条件退回，要求修正 91/283 口径、123/125 分母和 2 条弱层级 verified 记录的严格点位分析资格。 |
 
 本文件记录的独立复算仅覆盖坐标表行数、ID 与核心字段对齐及计数关系；未声称完整重跑阶段二脚本或独立复算全部 42 个文件的 SHA-256。
+
+
+### K1. P0-2 独立 Review 修订交接
+
+| 文件 | 类型 | 状态与用途 |
+|---|---|---|
+| `04_handoff/20261017_deepseek_p0_2_review_corrections.md` | Markdown | 已归档；修正 91/283 总量口径、123/125 分母、2 条弱层级 verified 的严格点位分析资格，并补充断言。 |
+
