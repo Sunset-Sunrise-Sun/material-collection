@@ -364,3 +364,12 @@ v1 文件保留不删。
 `REPRODUCE.md`、`reproduce_scripts/01_resolve_coordinates.py`。
 
 **不自行宣布 P0-2/P0 整批通过**，等待 ChatGPT 复核。
+
+
+## ChatGPT 独立复核：P0-2 v3（2026-10-17）
+
+审查报告：`05_deliverables/integration_review/ChatGPT独立验收_P0-2_v3_20261017.md`。
+
+**P0-2 v3 必修项验收通过。** 独立复算 v2/v3 均为 340 行、place_id 集合一致、分类变化 0 条；30 项结构化断言全部通过。阶段二明细和分层表各仅在 `P-45b4cccd` 两个字段（原 n_candidates、原 level）由继承值改为空值，其他行和分类不变；原始 n_candidates>1 仍为 125。记录级点位资格 93、原始 verified=Y 95、门牌粒度记录数（含未确认候选）209、街道级可归属 283 均复算通过；最终米级分析无授权，待坐标系验证。接受阶段二目录就地更新，接受 REPRODUCE 顶部勘误横幅且保留原错误行。
+
+非阻塞建议：汇总表 R2 行明确“93 条待坐标系验证；2 条否（层级待核）”；后续审计抽取表增加实际 WGS84 坐标、原始地址、street/formatted_address（若原始输入存在）以提高脱离本地原始 CSV 的可追溯性。该结论仅验收 P0-2 v3，不代表 P0 整批或主研究报告最终通过。
