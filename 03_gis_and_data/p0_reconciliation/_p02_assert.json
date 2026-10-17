@@ -1,0 +1,23 @@
+{
+ "assert_all": true,
+ "counts": {
+  "total": 340,
+  "verified95": 95,
+  "layer116": 116,
+  "layer72": 72,
+  "new91": 91,
+  "point_ok": 95,
+  "door_ok": 209,
+  "street_ok": 283,
+  "multi_total": 123,
+  "single_total": 119,
+  "single_ok": 97
+ },
+ "relations": {
+  "b116_and_b95": 0,
+  "b91_in_116_or_72": 91,
+  "b91_in_116": 68,
+  "b91_in_72": 23,
+  "sum_check": 340
+ }
+}
