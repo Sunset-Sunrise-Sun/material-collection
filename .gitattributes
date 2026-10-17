@@ -1,0 +1,17 @@
+# 归档仓库：所有原材料必须"字节级原样"保存，禁止任何行尾自动转换。
+# 原因：2026-10-30 首次推送时，Windows git 默认 core.autocrlf=true 使
+# .md/.csv 在提交时被 LF→CRLF 转换，导致远端下载后 SHA-256 与原文件不一致。
+# 本文件将文本文件设为 -text（不做任何转换），二进制按 binary 处理。
+
+* -text
+
+# 二进制原件（不得转换）
+*.xlsx binary
+*.xls  binary
+*.docx binary
+*.doc  binary
+*.pdf  binary
+*.zip  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
