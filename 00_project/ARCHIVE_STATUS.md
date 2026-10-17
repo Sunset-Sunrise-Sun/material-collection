@@ -206,3 +206,380 @@ GitHub 连接器可直接写入文本文件，但不能把 Library 中的原始 
 ### 新 ChatGPT 官方补证任务（2026-10-17）
 
 新增交接：`04_handoff/20261017_new_chatgpt_official_search_prompt.md`。范围限定为平安通官方公告/采购合同口径、2025 智慧养老需求清单附件、AI+养老专项场景清单、SMART 验证与惠记忆正式统计、文冲新村实际运行证据。不得泛搜或修改冻结框架。
+
+---
+
+## 2026-10-17 P0 核对批次（P0-1/P0-2/P0-3）
+
+**性质声明**：本批次为**执行方（DeepSeek）自检 + 官方原件落盘**，
+**不构成 ChatGPT 独立验收，也不构成组长验收**。研究总报告仍为工作版。
+
+### 归档位置
+
+| 路径 | 内容 |
+|---|---|
+| `03_gis_and_data/p0_reconciliation/` | P0 核对报告、逐行坐标交叉表、证据状态表、清单、复现脚本 |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/` | 本轮新取得的官方原件（含 SHA-256） |
+| `03_gis_and_data/phase2_local_gis/` | 阶段二 9 份成果 + 10 个复现脚本（原在 review 分支，本批次一并归档） |
+
+### P0-1 核心结论：日期属**误标**
+
+- 阶段二 9 份成果、10 个脚本**全部存在**，逐个复算 SHA-256（见 `P0-1_原件清单.csv`）。
+- 名称中的 `20261030`／`20261101` 为**计划批次标签**，非完成日期。实际完成于 **2026-10-17**。
+- 排除「时钟不同」：GitHub 服务器 `created_at` = 2026-10-17T02:57:46Z，与本机时钟一致；
+  本次 commit 两侧秒级吻合（GitHub 03:58:45Z / 本地 11:58:45+08）。
+- 排除「未来版本」：文件物理存在于 2026-10-17，可读、可哈希。
+- **披露**：上一轮曾将阶段二报告日期由 2026-11-01 单方面改为 2026-10-17；
+  该改动已在 `P0核对报告_20261017.md` 第 1.5 节显式披露，本轮不改历史文件，只并列对照。
+
+### P0-2 核心结论：95/116/72/91 **不矛盾**
+
+```text
+95  = 原始 verified=Y（点位可用）
+116 = 门牌级层（不含任何 verified，与 95 交集 = 0）
+72  = 仅街道层（不含任何 verified）
+188 = 116 + 72 = 本轮「街道可归属」（与 95 互斥）
+283 = 95 + 188 = 有街道归属的全部记录
+91  = 123 条原多候选中通过一致性者 = 68(属116) + 23(属72)  → 是 188 的子集，非独立类别
+```
+- `95+116+72+30+24+3 = 340`；**26 项断言全部通过**（逐行表 340 行可复算）。
+- 口径区分：`n_candidates==1 且 needs_review` = **119** 条；其中状态为「空间-文本一致」= **97** 条，二者不可混用。
+- 无任何多候选被升级为 verified；verified 仍为 95 条。
+
+### P0-3 核心结论：采购结果**已取得**，不得写「未取得」
+
+| 口径 | 数值 | 来源 | 证据等级 |
+|---|---|---|---|
+| 部门预算·绩效项目预算数 | **1,795.00 万元** | 民政局2026部门预算 PDF p23/p32 | A（原件已取得） |
+| 采购·三年总预算 | **3,005.10 万元** | CCGP 结果公告 | A（原件已取得） |
+| 采购·前12个月采购预算 | **1,001.70 万元** | CCGP 结果公告 | A（原件已取得） |
+| 中标形式 | **折扣 83.00%** | 结果公告 + 分项报价表 | A |
+| 公告「总中标金额」栏 | **￥0.000000 万元** | 结果公告（折扣形式无固定总价） | A |
+| 分项报价表 单价/数量/折扣/总价 | 10,017,000 / 1(项) / 83 / 10,017,000.00 | 官方附件2 | A |
+| 代理服务费 | 11.962750 万元（中标人付） | 结果公告 | A |
+| 服务期 | 2026-10-01 至 2029-09-30，**每12个月一签** | 结果公告 | A |
+| ~~5,385 万元~~ | **1,795×3 自行推导** | 无官方来源 | **D（已废止）** |
+
+- **1,795 万元是部门预算中的项目预算数，不是采购价、不是合同价。**
+- **5,385 万元为 1,795×3 的自行推导，本轮废止，不得再引用。**（原出处：SV-18 条）
+- 1,795 与 1,001.7 差额 **793.3 万元，原因未获官方说明，标待核**；两数并列，不合并、不换算。
+- **承接主体变更公告正文已取得官方原件**（2026-10-14 12:06:01，SHA-256 `587BFB10…`），
+  此前「仅有第三方镜像」的状态已升级为 A 级；官方正文比镜像更完整。
+- 仍待取得：正式合同、年度续签、预算执行与实际支付、服务对象数、有效使用与工单数据、
+  评估报告全文。**服务单价（元/户/月）在官方口径下不可计算**（报价表为整包1项×折扣，无按户单价）。
+
+### 本批次新增文件 SHA-256
+| `03_gis_and_data/p0_reconciliation/P0-1_原件清单.csv` | 7352 | `CB940B0BF5C97071B39BC235EE00B9A1B8B3212E6BBAB67E5F9A41AD4EC3505F` |
+| `03_gis_and_data/p0_reconciliation/P0-2_分层互斥汇总表.csv` | 934 | `FC4C36CCD2320BD85CEA7F1B01A569AFD753D9002F891D02C97F435C6BDA545E` |
+| `03_gis_and_data/p0_reconciliation/P0-2_海珠坐标逐行分类交叉表.csv` | 130585 | `9337B7CD6AFC377E48AA2A8284030E054DF60A90501BE49161EDA9121E7A5BEF` |
+| `03_gis_and_data/p0_reconciliation/P0-3_平安通证据状态表.xlsx` | 20686 | `DBD4D8D8F0909D4B3528BBB8B1FFD52A822742DF6C4324DAF0C3A7D5DBF802E0` |
+| `03_gis_and_data/p0_reconciliation/P0核对报告_20261017.md` | 22567 | `140BD9A238DD90BA01C06F17081D743A8C36E6E2E15C9234DA68569494197BAA` |
+| `03_gis_and_data/p0_reconciliation/_p01_verdict.json` | 551 | `EC9AEB328D2D2C0E4DFFD9A39B1DAA66B6BBAE9065783D4A545BBE9C8676860D` |
+| `03_gis_and_data/p0_reconciliation/_p02_assert.json` | 393 | `72F769B2F7F135614C21D875767739B310C00481DA8E19B12FD2934062830D23` |
+| `03_gis_and_data/p0_reconciliation/输入输出SHA256清单.csv` | 3373 | `45861251370745460238B6A0D4A6A1AE6921ABAB6980475259AA6DA0012F77ED` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/att_p03_报价附件.pdf` | 117469 | `C2280430F69DB2625B4E9BC68511713664F8BD5B82583C3C19C52ADEA6C0FC13` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_11045014_subject_change.html` | 21518 | `587BFB1040673C5E419DAE96F562008D596849B89C46AEC5DA306CC8AE7BF877` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_11045014_官方正文.txt` | 524 | `71183B689183B29A24CBADC243E94BA66EB3EF3EC5040CD1C30A12389EF15C76` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_2026_budget.pdf` | 483146 | `7C92B8ED044546196E0C2FA30213B7CE5511A1E5CAE9759CE3E54D69316FD29F` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_dt_list.html` | 25756 | `995C4A668AF862A901AA8A2224D8AF51FB533E650DC6A1BF8D29A5BD145DF840` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/p03_ccgp_result.html` | 28525 | `383E12909D53837556700603997E36E212D95FF7575076F85F3C2D4A331169CE` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/p03_yfbzb_mirror.html` | 162061 | `355EBB1D4E6D9D9756CC67B67D4AFC45945F64A13F9565ECF68654A538A51BE7` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_01_recon_clock_evidence.py` | 5192 | `DAC318D65CE90D2CCA5DD57AD4F604A91C7098BBB23BB3DB3C3ED71EBE82A261` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_02_external_clock_anchor.py` | 4758 | `8E5406DF1ECD29231ABA75CA22E5285A70CCF66FAC334E08629DF62B4D8D56A7` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_03_inventory_and_date_verdict.py` | 7255 | `5AF35CA296CF7582F3D55724D92FD21671DA1EBFBE3932C88F7A22B3ED8F90A0` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_04_coordinate_cross_table.py` | 14646 | `CC6F76688B4AACCC77B821964AF519A2DEC9CBBAD7BE1D43580E445CC0B9D57C` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_05_fetch_official_evidence.py` | 4628 | `CC75ABE684579B6825690516DB94EA6E3101D7F52794667D2E5CFDE4F2DBDD43` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_06_extract_official_text.py` | 4242 | `2DC92C22D7DE1FA696283719260547B9628872173DA3A4B4D1D2F6CB22DE6A19` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_07_build_p0_workbook.py` | 23890 | `F0C66D98F683B891D919B9D642F80DAF8E6BC8E81BE682DE7724AA8E70A0B301` |
+
+### 纪律遵守
+
+- 未修改 main，未 force-push，未覆盖历史文件；
+- 未修改冻结 7 维 16 项（A1—G2）；未新增指标、未赋权、未打总分、未排名；
+- 未修改封版包与历史输入；
+- 本批次仅新增目录与追加清单记录。
+
+
+## ChatGPT 独立验收 P0（2026-10-17）
+
+新增独立审查：`05_deliverables/integration_review/ChatGPT独立验收_P0_20261017.md`。
+
+结论：P0-1 通过（附证据边界）；P0-3 通过（官方原件已归档，合同/支付/运营数据仍待取）；P0-2 有条件退回。独立解析三份坐标表后确认 340 行及 ID/核心字段对齐，计数 95/116/72/30/24/3 与新增 91 条关系成立；但发现 `REPRODUCE.md` 仍把 91 写成街道级总数（应为 283 条总归属、91 条新增多候选），123 的分母未说明排除 2 条失败编码记录，且 2 条原始 verified 记录的 geocoder 层级为“兴趣点”却被无条件标记为点位级可用。修正前整批 P0 不关闭。
+
+本审查未独立重跑全部阶段二脚本，亦未重算全部 42 个文件的本地—远端 SHA-256；这些仍标为执行方自检结果。main 未修改。
+
+
+### P0-2 Review 修订任务（2026-10-17）
+
+新增交接：`04_handoff/20261017_deepseek_p0_2_review_corrections.md`。要求修正 REPRODUCE.md 的 91/283 口径、明确原始 `n_candidates>1` 为 125（123 条有编码结果 + 2 条失败）、将 2 条弱层级 verified 与严格点位分析资格分开，并增加相应断言。完成后仍需 ChatGPT 复核。
+
+### 2026-10-17 P0-2 修订（回应独立复核）
+
+**性质**：仅修订定义/字段/断言，**未改变任何一条记录的分类（0 条重新分类）**；
+**不宣布 P0 或主研究报告已最终通过**。
+
+| 更正项 | 原 | 更正为 |
+|---|---|---|
+| 街道级可归属合计 | 91 | **283** |
+| 门牌级 | 68 | **门牌粒度可用（含未确认候选）209** |
+| 点位级可用 | 95 | **严格点位分析资格 93**（原始 verified 仍为 95，未降级） |
+| 多候选分母 | 123 | **125**（= 123 编码可用 + 2 落区外 failed） |
+
+**对复核意见的一处纠正**：复核称 2 条 failed 记录「坐标为空」，
+实际 `P-0bb41fec`（白云区 440111）、`P-2f0f7abf`（南沙区 440115）**均有坐标，
+失败原因是落海珠区外（行政区不符）**；真正无坐标的 failed 是第 3 条 `P-45b4cccd`（API 错误 30001）。
+
+新增文件：逐行交叉表 v2、汇总表 v2、修订说明（含新旧 SHA、逐行差异、数据字典）、
+REPRODUCE 勘误修订版、断言 v2（25 项全通过）、2 个复现脚本。
+v1 文件保留不删。
+
+
+## ChatGPT 独立复核：P0-2 v2（2026-10-17）
+
+审查报告：`05_deliverables/integration_review/ChatGPT独立验收_P0-2_v2_20261017.md`。
+修订交接：`04_handoff/20261017_deepseek_p0_2_v3_followup.md`。
+
+独立复算确认 v1/v2 均为 340 行、place_id 集合一致、分类变化 0 条，95/93/209/283/91/125/123 核心计数成立。接受并撤回上一轮“两个多候选 failed 坐标为空”的归因；修订口径应为有坐标但落海珠区外（白云区/南沙区）。但当前 v2 仍有待修事项：阶段二 `01_resolve_coordinates.py` 的坐标异常分支在初始化当前行的 `n/lvl/ver` 前引用这些变量，导致 `P-45b4cccd` 的 `原n_candidates=1`、`原level=住宅区` 与上一行值相同，疑似继承上行值；G3c 检查 adcode 而非经纬度、G4 使用硬编码常量；93 条是记录级资格，米级分析仍受坐标系验证限制；原 REPRODUCE.md 需要指向勘误版。P0-2 暂不关闭。
+
+### 2026-10-17 P0-2 v3（审计加固，回应第二轮独立复核）
+
+**仅修正审计问题**：不重做 GIS、**0 条类别变化**、不改冻结框架。保留 v1/v2 文件。
+
+| 必修 | 处理 |
+|---|---|
+| 1 脚本继承缺陷 | **确认为真实缺陷并修复**：`01_resolve_coordinates.py` 的 except 分支读取了上一行 `n/lvl/ver`；
+实际仅影响 1 条 `P-45b4cccd`（继承了 `P-68e159ad` 的 `n=1 / level=住宅区`），重跑后为缺失。
+**重算 `n_candidates>1` 仍为 125**（非硬编码）。修复后脚本 SHA `01CBFA1B…` |
+| 2 断言 | G3c 改为直接检查原始 `lng/lat` 非空；G4 改为从逐行数据分别统计 91/17/15/2 再求和；
+断言输出结构化数组（name/actual/expected/passed），**30 项全部通过** |
+| 3 资格分级 | **记录级点位资格 93** 与 **最终米级分析资格=待坐标系验证** 分离；
+0 条被标为「最终米级可用」 |
+| 4 标签 | `门牌粒度可用_含未确认候选` → **`门牌粒度记录数_含未确认候选`**（209 = 93 + 116，非 209 个已核实点） |
+| 5 勘误可发现 | `phase2_local_gis/REPRODUCE.md` **顶部新增勘误横幅**，原错误行（91、68）**完整保留**，链接权威更正版 |
+
+**新增产物**：v3 逐行表（340 行 × 26 列）、v3 汇总表、`P0-2_geocode审计抽取.csv`（340 行，
+最小可审计字段）、v3 断言 JSON、v3 修订说明、3 个 v3 复现脚本。
+
+**阶段二被修复/加注的文件**：`海珠坐标多证据批量核验明细.csv`、`海珠坐标结论分层_街道可用vs点位可用.csv`、
+`REPRODUCE.md`、`reproduce_scripts/01_resolve_coordinates.py`。
+
+**不自行宣布 P0-2/P0 整批通过**，等待 ChatGPT 复核。
+
+
+## ChatGPT 独立复核：P0-2 v3（2026-10-17）
+
+审查报告：`05_deliverables/integration_review/ChatGPT独立验收_P0-2_v3_20261017.md`。
+
+**P0-2 v3 必修项验收通过。** 独立复算 v2/v3 均为 340 行、place_id 集合一致、分类变化 0 条；30 项结构化断言全部通过。阶段二明细和分层表各仅在 `P-45b4cccd` 两个字段（原 n_candidates、原 level）由继承值改为空值，其他行和分类不变；原始 n_candidates>1 仍为 125。记录级点位资格 93、原始 verified=Y 95、门牌粒度记录数（含未确认候选）209、街道级可归属 283 均复算通过；最终米级分析无授权，待坐标系验证。接受阶段二目录就地更新，接受 REPRODUCE 顶部勘误横幅且保留原错误行。
+
+非阻塞建议：汇总表 R2 行明确“93 条待坐标系验证；2 条否（层级待核）”；后续审计抽取表增加实际 WGS84 坐标、原始地址、street/formatted_address（若原始输入存在）以提高脱离本地原始 CSV 的可追溯性。该结论仅验收 P0-2 v3，不代表 P0 整批或主研究报告最终通过。
+
+
+## P0-3 公开证据增补（2026-10-17）
+
+增补文件：
+- `03_gis_and_data/p0_reconciliation/P0-3_公开证据增补与未决缺口_20261017.md`
+- `03_gis_and_data/p0_reconciliation/P0-3_公开证据增补_20261017.csv`
+
+本轮发现并核验广州市民政局 2025—2026 年度“平安通”服务评估结果公示：华邦美好家园为“合格”，广东有线与中国移动为“良好”；另取得官方汇总口径：截至 2025 年底累计资助超 10 万名，2025 全年呼援服务 600 人次；另一份 2026-09-14 评估工作动态称“2025年以来”呼援 576 人次、关怀等服务约 1099.26 万人次。**576 与 600 的统计期间/口径疑点已显式登记，暂不合并。**
+
+状态修订：评估“结果公示”已取得；完整评估报告、当前在册/活跃用户、原始工单、正式合同与续签、2025 项目实际执行金额、2026 实际支付、793.30 万差额官方说明仍未全部解决。官方目录显示 2025 年度广州市民政局（本级）部门决算于 2026-10-13 发布，但本轮尚未下载并解析对应附件，不能据目录条目声称已取得平安通执行金额。
+
+
+### P0-3 增补续记：2026 年新政策（2026-10-17）
+
+在公开证据增补文件中加入 E-NEW-07：《广州市民政局 广州市财政局关于进一步优化提升“平安通”服务的通知》（穗民规字〔2026〕4号，2026-10-01 起施行）。该政策明确依托市为老服务综合平台动态监测服务数据，并依据有效、规范服务记录及采购合同按季度结算拨付。此项可用于提出精确数据申请，但**不等于已经取得实际支付或实际服务记录**。2025-08 至 2026-07 评估期不能直接当作新政策实施后的效果评估。
+
+
+## 2026-10-17 组长汇报方案增量修订版
+
+新增：`05_deliverables/组长汇报方案_增量修订版_20261017.md`。该文件基于 2026-10-16 主报告、当前官方补证和 P0 审计状态，供组长阶段性审阅；不覆盖原报告与冻结框架。
+
+重要纠错：广州市民政局 2026 年采购意向公开页明确写明平安通 2026 年拟安排预算 1,795 万元、三年合计预算不超过 5,385 万元；后续采购结果材料另列三年预算 3,005.1 万元、首 12 个月 1,001.7 万元和 83% 折扣率。两组数据属于不同阶段/口径，须并列保留并待官方解释，不得把 5,385 万元标成无官方来源的自行推导，也不得把预算当实际支付。576 与 600 次呼援口径差异同样待核。
+
+研究建议维持：A 居家安全发现—响应与 B 认知筛查—转诊为第一轮研究取证重点；C 康复训练次优先；D 信息获取—服务办理先做桌面测试；S6/S7 保留补证；S9/S10 为观察项。此顺序是研究取证优先级，不是试点/推广排名。7 维 16 项框架保持冻结。
+
+
+## 2026-10-17 平安通采购金额口径勘误
+
+新增 05_deliverables/integration_review/平安通采购金额口径勘误_20261017.md。纠正此前“5,385 万元无官方来源”的错误：广州市民政局官方采购意向页明确列出三年合计预算不超过 5,385 万元。后续采购结果材料另列三年预算 3,005.1 万元、首 12 个月 1,001.7 万元和 83% 折扣率。两组数字为不同阶段/口径，均保留，差异原因待官方解释；预算不等于实际支付。
+
+> **本节为最新实际状态**。若本文件其他章节与本节的路径/字节/SHA-256 不一致，以本节为准；旧章节保留以便追溯，不删除。
+
+---
+
+## 2026-10-17 全量归档补推与 GitHub 一致性核查
+
+**性质**：补充归档与一致性核查，**不重新开展研究、不重做已完成的数据处理**。
+**执行方自检**，不构成 ChatGPT 独立验收。
+
+### 本次上传规模
+
+| 项 | 值 |
+|---|---|
+| 上传前 main 文件数 | 30 |
+| 本次新增文件数 | **81** |
+| 新增文件总大小 | 9477696 字节（9.04 MB） |
+| 既有文件改动 | 仅本清单与 MATERIAL_MANIFEST（内容追加） |
+| 新增内部字节级重复 | 0 组 |
+
+### 新增内容分组
+
+| 仓库子目录 | 文件数 | 字节 |
+|---|---|---|
+| `01_official_evidence/source_originals/` | 1 | 39460 |
+| `01_official_evidence/广州AI养老_官方证据补充与机构取证工作表.xlsx/` | 1 | 20760 |
+| `02_scenario_and_evaluation/frozen_framework/` | 1 | 34381 |
+| `02_scenario_and_evaluation/场景证据与评价矩阵.xlsx/` | 1 | 149647 |
+| `02_scenario_and_evaluation/广州市AI养老场景评价与比较_最终汇总表.xlsx/` | 1 | 40874 |
+| `02_scenario_and_evaluation/机构取证清单_最终版.xlsx/` | 1 | 20243 |
+| `03_gis_and_data/p0_reconciliation/` | 41 | 1724469 |
+| `03_gis_and_data/phase2_local_gis/` | 20 | 624668 |
+| `05_deliverables/final_report/` | 2 | 923724 |
+| `05_deliverables/history/` | 3 | 1215172 |
+| `05_deliverables/integration_review/` | 1 | 2293 |
+| `05_deliverables/leader_brief_20261017/` | 4 | 194526 |
+| `05_deliverables/packages/` | 2 | 4012384 |
+| `05_deliverables/reports/` | 1 | 457493 |
+| `05_deliverables/组长汇报方案_增量修订版_20261017.md/` | 1 | 17602 |
+
+### 阶段二 GIS 成果（从审核分支历史恢复）
+
+来源提交：`374007ac8c10`（当时含 93 文件）；**当前 p0 分支 HEAD 已不含这些文件**，
+故本轮从历史恢复并纳入 `main`，使后续研究者无需依赖审核分支。
+
+`03_gis_and_data/phase2_local_gis/`：20 个文件（含 10 个复现脚本、`本轮本地数据处理与GIS分析结果.xlsx`、两份海珠坐标 CSV、`统一缺口与行动台账.xlsx`、REPRODUCE、验收与变更说明等）。
+
+### P0 核对成果（从审核分支历史恢复）
+
+`03_gis_and_data/p0_reconciliation/`：含 P0 核对报告、P0-1 原件清单、P0-2 逐行交叉表 v1/v2/v3、分层互斥汇总 v1/v2/v3、geocode 审计抽取、断言 JSON v2/v3、v2/v3 修订说明与变更日志、REPRODUCE 勘误版、7 件官方证据原件、12 个复现脚本。
+
+**重要提醒**：`review/p0-reconciliation` 分支 HEAD 现仅有 4 个文件，其后续 13 个提交删除了 92 个此前已审阅的文件。这些文件仍完整存在于提交 `374007ac8c10` 的 Git 历史中，本轮已恢复至 `main`。
+
+### P0-3 金额口径勘误（本轮新增）
+
+**纠正我此前的一处错误结论**：我曾把「5,385 万元」判定为「1,795×3 自行推导、无官方来源、废止」。经回查官方《广州市民政局 2026 年 1 月至 12 月政府采购意向公开情况》（`post_10667784.html`）原文确认：
+
+> 「本项目2026年拟安排预算资金为1795万……**3年合计预算金额不超过5385万**。」
+
+两笔口径分属**采购意向**与**采购结果**两个阶段，须并列保留，差异原因待官方解释。
+
+新增：`03_gis_and_data/p0_reconciliation/P0-3_金额口径勘误表_20261017.xlsx`；官方采购意向页原文已落盘至 `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_2026_procurement_intention_post_10667784.html`（227,664 B，SHA-256 `44D87AD2E89158B093AAEA5322F9C88FD0CDA4F81C6B1E7B065200670DB3130F`）。
+原 v3 工作簿中「已废止」表述**保留不删**，由勘误表显式取代。
+
+### 最终交付与组长材料（本轮新上传）
+
+| 路径 | 说明 |
+|---|---|
+| `05_deliverables/packages/广州市AI养老研究_最终成果包_20261020.zip` | 封版成果包（65 条目） |
+| `05_deliverables/packages/广州市AI养老研究20261020.zip` | 组长汇报精简包 ZIP（14 条目） |
+| `05_deliverables/final_report/` | 最终研究报告 PDF + Markdown |
+| `05_deliverables/reports/广州市AI养老研究_阶段工作报告_20261016.pdf` | 阶段工作报告 |
+| `05_deliverables/leader_brief_20261017/` | **本轮修订的组长讨论稿 PDF/DOCX** + 增量修订版 PDF + 打包 |
+| `05_deliverables/history/` | 历史版本 PDF 与研究简报早期版 |
+| `02_scenario_and_evaluation/场景证据与评价矩阵.xlsx` | 场景与评价取证总表（23 工作表） |
+| `02_scenario_and_evaluation/frozen_framework/16项指标操作化表_最终版.xlsx` | 冻结框架（SHA `F684F7F4…`） |
+| `01_official_evidence/广州AI养老_官方证据补充与机构取证工作表.xlsx` | 官方证据补充工作表 |
+| `01_official_evidence/source_originals/广州市AI养老_缺失官方取证输入文件_20261017.zip` | 找回输入包原件 |
+
+### 仍未找到的原始件（不得按摘要重建）
+
+| 目标文件 | 已检查位置 | 状态 |
+|---|---|---|
+| `广州市AI养老研究_最终成果包_20261020(1).zip` | 本地工作区全部目录 + D:\webDownload | **未找到**（Library 版约 2.10 MB） |
+| `广州市AI养老_官方取证第二轮与GIS联合归档_20261017.zip` | 本地工作区全部目录 + D:\webDownload | **未找到**（联合归档包） |
+| `广州市AI养老_候选场景与评价取证总表_最终交付版_20261016.xlsx` | 本地工作区全部目录 + D:\webDownload | **未找到**（旧名；已由《场景证据与评价矩阵.xlsx》替代） |
+| `场景需求匹配与推广优先序_最终交付版_20261016.docx` | 本地工作区全部目录 + D:\webDownload | **未找到**（早期最终交付 DOCX） |
+| `场景需求匹配与推广优先序_最终交付版_20261016.pdf` | 本地工作区全部目录 + D:\webDownload | **未找到**（早期最终交付 PDF） |
+| `机构取证与访谈工具包.docx` | 本地工作区全部目录 + D:\webDownload | **未找到**（访谈工具包（本地仅有 机构取证清单_最终版.xlsx）） |
+| `筑工杯_AI养老_20261016最终交付包.zip` | 本地工作区全部目录 + D:\webDownload | **未找到**（2026-10-16 最终交付包） |
+| `筑工杯_AI养老_20261016修订交付.zip` | 本地工作区全部目录 + D:\webDownload | **未找到**（2026-10-16 修订交付包） |
+| `需求判据与方案深化_v2_20261015.zip` | 本地工作区全部目录 + D:\webDownload | **未找到**（方案深化包） |
+| `AI养老评价框架_场景对接_20261015_最终冻结版.zip` | 本地工作区全部目录 + D:\webDownload | **未找到**（评价框架冻结包） |
+| `广州市AI养老应用场景调研.pdf` | 本地工作区全部目录 + D:\webDownload | **未找到**（调研报告） |
+
+### 本次全部新增文件 SHA-256
+
+| 路径 | 字节 | SHA-256 |
+|---|---|---|
+| `01_official_evidence/source_originals/广州市AI养老_缺失官方取证输入文件_20261017.zip` | 39460 | `4D61FFF5DFBF656080327DDDCE7BAB47A3EF766A0736A23208C58F1FA369EE00` |
+| `01_official_evidence/广州AI养老_官方证据补充与机构取证工作表.xlsx` | 20760 | `6C44737779B8351757717D403E36325D805023CF068939D95634574D21CD604A` |
+| `02_scenario_and_evaluation/frozen_framework/16项指标操作化表_最终版.xlsx` | 34381 | `F684F7F4F1C6123D3CF3B8E65086653EA5ED16736E322F4A566781651C3BB231` |
+| `02_scenario_and_evaluation/场景证据与评价矩阵.xlsx` | 149647 | `3A64563E09632079F8F347F3783421D842967BF66091ED35D1B110CF1D7185FB` |
+| `02_scenario_and_evaluation/广州市AI养老场景评价与比较_最终汇总表.xlsx` | 40874 | `470CB20B7369216F2B00B79E89601529B522ED51692B8523B547D87452E7B03B` |
+| `02_scenario_and_evaluation/机构取证清单_最终版.xlsx` | 20243 | `9046CDBA2FB1E1BA4EAE744955C996390C6CCC417E81A4DD081B7650CEE0F8F5` |
+| `03_gis_and_data/p0_reconciliation/P0-1_原件清单.csv` | 7352 | `CB940B0BF5C97071B39BC235EE00B9A1B8B3212E6BBAB67E5F9A41AD4EC3505F` |
+| `03_gis_and_data/p0_reconciliation/P0-2_geocode审计抽取.csv` | 38395 | `A8E7365752223E0593676D9346EC4362A00B59A3930FFF8A18ECD066D905719F` |
+| `03_gis_and_data/p0_reconciliation/P0-2_v3修订说明_审计加固_20261017.md` | 13452 | `C1FA1E2CEB2A7BF7B9F03D7DF0B7A2954AE21BD431D04BABF9119DD90623355B` |
+| `03_gis_and_data/p0_reconciliation/P0-2_v3变更日志.md` | 3818 | `5563BD881C415D34B20841082B83AE67FA417F3998E012CFACF236D4598D1377` |
+| `03_gis_and_data/p0_reconciliation/P0-2_修订变更日志.md` | 2856 | `A2F9F7CDB1EE479A603B65D476DB96D532E0732623E346143266FF4723F2DFF8` |
+| `03_gis_and_data/p0_reconciliation/P0-2_修订说明_新旧对比_20261017.md` | 11703 | `1E59F1159C8F3F83C790474D8DDAB4180A8B471B1E1994F2CC993ACA8E83AE66` |
+| `03_gis_and_data/p0_reconciliation/P0-2_分层互斥汇总表.csv` | 934 | `FC4C36CCD2320BD85CEA7F1B01A569AFD753D9002F891D02C97F435C6BDA545E` |
+| `03_gis_and_data/p0_reconciliation/P0-2_分层互斥汇总表_v2.csv` | 1078 | `1797CFA116EB11B6F3C0C5653F8D58FB284A5FAA50159C6205358A2AF47BB69F` |
+| `03_gis_and_data/p0_reconciliation/P0-2_分层互斥汇总表_v3.csv` | 1232 | `62BCA1C04698B7AA32A0E0B8C290421C6394886DB8A819AB8B38EF92CBB36BA0` |
+| `03_gis_and_data/p0_reconciliation/P0-2_海珠坐标逐行分类交叉表.csv` | 130585 | `9337B7CD6AFC377E48AA2A8284030E054DF60A90501BE49161EDA9121E7A5BEF` |
+| `03_gis_and_data/p0_reconciliation/P0-2_海珠坐标逐行分类交叉表_v2.csv` | 129405 | `A9742465F497A4440559D40D4FE66255EF67034210CB60772C405CF0B002E67F` |
+| `03_gis_and_data/p0_reconciliation/P0-2_海珠坐标逐行分类交叉表_v3.csv` | 137900 | `53673DE58B9996630CE41A0553910C43763E9DD038F2F00017D750588BE0457F` |
+| `03_gis_and_data/p0_reconciliation/P0-3_平安通证据状态表.xlsx` | 20977 | `E90FE6476563339D1F46DAE931513619E15E1110B6538EDDE7DEE7441F210F68` |
+| `03_gis_and_data/p0_reconciliation/P0-3_金额口径勘误表_20261017.xlsx` | 9608 | `BDA910938795FFE99EA115B665E93BF6A1724CB57F962E70F05F87B0161823C9` |
+| `03_gis_and_data/p0_reconciliation/P0核对报告_20261017.md` | 22567 | `140BD9A238DD90BA01C06F17081D743A8C36E6E2E15C9234DA68569494197BAA` |
+| `03_gis_and_data/p0_reconciliation/REPRODUCE_勘误修订版.md` | 3061 | `3B064D02473F4F462BCB4DC6CB6867B8F6BE29FA5A72438D82B74FECC17901AF` |
+| `03_gis_and_data/p0_reconciliation/_p01_verdict.json` | 551 | `EC9AEB328D2D2C0E4DFFD9A39B1DAA66B6BBAE9065783D4A545BBE9C8676860D` |
+| `03_gis_and_data/p0_reconciliation/_p02_assert.json` | 393 | `72F769B2F7F135614C21D875767739B310C00481DA8E19B12FD2934062830D23` |
+| `03_gis_and_data/p0_reconciliation/_p02_assert_v2.json` | 1424 | `A5B6AC4C6F8FA4BFA9115A5342C70D2317CB9BBC6C4F06A91E3E931684D55A66` |
+| `03_gis_and_data/p0_reconciliation/_p02_assert_v3.json` | 5369 | `5DFB544E9743E5641445B76AE3866A3F89E26ADD462E490F892B4E7C89D227F0` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/att_p03_报价附件.pdf` | 117469 | `C2280430F69DB2625B4E9BC68511713664F8BD5B82583C3C19C52ADEA6C0FC13` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_11045014_subject_change.html` | 21518 | `587BFB1040673C5E419DAE96F562008D596849B89C46AEC5DA306CC8AE7BF877` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_11045014_官方正文.txt` | 524 | `71183B689183B29A24CBADC243E94BA66EB3EF3EC5040CD1C30A12389EF15C76` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_2026_budget.pdf` | 483146 | `7C92B8ED044546196E0C2FA30213B7CE5511A1E5CAE9759CE3E54D69316FD29F` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_2026_procurement_intention_post_10667784.html` | 227664 | `44D87AD2E89158B093AAEA5322F9C88FD0CDA4F81C6B1E7B065200670DB3130F` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/mzj_dt_list.html` | 25756 | `995C4A668AF862A901AA8A2224D8AF51FB533E650DC6A1BF8D29A5BD145DF840` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/p03_ccgp_result.html` | 28525 | `383E12909D53837556700603997E36E212D95FF7575076F85F3C2D4A331169CE` |
+| `03_gis_and_data/p0_reconciliation/evidence_originals/p03_yfbzb_mirror.html` | 162061 | `355EBB1D4E6D9D9756CC67B67D4AFC45945F64A13F9565ECF68654A538A51BE7` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_01_recon_clock_evidence.py` | 5192 | `DAC318D65CE90D2CCA5DD57AD4F604A91C7098BBB23BB3DB3C3ED71EBE82A261` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_02_external_clock_anchor.py` | 4758 | `8E5406DF1ECD29231ABA75CA22E5285A70CCF66FAC334E08629DF62B4D8D56A7` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_03_inventory_and_date_verdict.py` | 7255 | `5AF35CA296CF7582F3D55724D92FD21671DA1EBFBE3932C88F7A22B3ED8F90A0` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_04_coordinate_cross_table.py` | 14646 | `CC6F76688B4AACCC77B821964AF519A2DEC9CBBAD7BE1D43580E445CC0B9D57C` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_05_fetch_official_evidence.py` | 4628 | `CC75ABE684579B6825690516DB94EA6E3101D7F52794667D2E5CFDE4F2DBDD43` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_06_extract_official_text.py` | 4242 | `2DC92C22D7DE1FA696283719260547B9628872173DA3A4B4D1D2F6CB22DE6A19` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_07_build_p0_workbook.py` | 23890 | `F0C66D98F683B891D919B9D642F80DAF8E6BC8E81BE682DE7724AA8E70A0B301` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_08_coordinate_cross_table_v2.py` | 14706 | `1224C5936A2D581B2DB32816FD299179324F05AAB66E11660CC729940BD3E1FC` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_09_verify_review_claims.py` | 4950 | `AB4C459E89F924DC7907AF1EEBF2492B3D2F20FA176E2A0CE90C91D17897569C` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_10_coordinate_cross_table_v3.py` | 17785 | `34CD26382044B298ED08D9B7F01CA9C0523DE4E2B25B5A64625588B6E2F7FF36` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_11_verify_inheritance_bug.py` | 4196 | `51A1807B577AA1FBD75238CB242506689F3D7315DE3F6CB07BA115E5C7F0C415` |
+| `03_gis_and_data/p0_reconciliation/reproduce_scripts/p0_12_rerun_diff_check.py` | 3815 | `848F73EF0CB44B8D026E5E390CBEC4C350C55EF5DC5D8E3DC650675BD3D36EE4` |
+| `03_gis_and_data/p0_reconciliation/输入输出SHA256清单.csv` | 5083 | `13B5CA7739E12A5A0D295DA957488E6C3D0D24CE5E6B54DCB4370F363FC89072` |
+| `03_gis_and_data/phase2_local_gis/REPRODUCE.md` | 5805 | `7E8886DDA17D2625ACC7497B8714B2E69FB32CCFB2108FB5FE4A7AF64C2D3A39` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/01_resolve_coordinates.py` | 14578 | `01CBFA1BC3489661DAEA64FABA53291838FE8EC1C525C80F9F787BACD6B6AE71` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/02_evidence_strength.py` | 5592 | `BE2C5B3E9C006A3B169A298E6241AC189C0B463FD6E97B6EF3C766DBF15D8E53` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/03_build_gap_ledger.py` | 33889 | `43CCFC7FF02FB59BF1DEEACEB81DE56033A9DEF85F7D16136D6D809A2757C970` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/04_gis_results_part1.py` | 17759 | `9D0C25B707A252BC8666E887CEEBCFB37C4B15A436929225697CB872ACEDAEF9` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/05_gis_results_part2.py` | 21508 | `532BABE8B802BD7BBA76284008DF0C4D84611D16D5C435F981CA1CADF430EE59` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/06_taskC_demand.py` | 18225 | `3EAB5A189D12CE9084A4658963086E15C9F1179598289665F15DAFC86275122D` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/07_taskD_scenario_api.py` | 17898 | `31414CC1F78834B16568E20852B2B82B63FCCA426C2097426CB2D4B89E5064D0` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/ref_坐标系双假设.py` | 7587 | `06ABA5DDDFC645A2E1DC77536140B9CB4D0DA9A664DF5E21F4AB900F16E6A001` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/ref_官方人口对账_build.py` | 43158 | `37BBB48A3231FE4E5824888B308E2A6B0AB372C0AE96744F8A19DA79B0734067` |
+| `03_gis_and_data/phase2_local_gis/reproduce_scripts/ref_阶段1坐标决议.py` | 14944 | `D3BE8865D69881F4F5F4CF6250138BF4256B8F6EEFBA8B0731D0A4C160CF340A` |
+| `03_gis_and_data/phase2_local_gis/变更日志与输入输出清单.md` | 4596 | `AE876C23F7CF4ECAE3E47F3F89F882E1B650EA8EC81A2FFC2B83CAC4306E3F2B` |
+| `03_gis_and_data/phase2_local_gis/归档说明_独立验收用.md` | 32387 | `02D9CF515C1B6AC0982A3D97CDB2801D3B60E4A3ACD680C59DE62B5B0B41B28D` |
+| `03_gis_and_data/phase2_local_gis/数据质量问题与未解决事项.md` | 12713 | `FD5532604C0C039F7C7BB586FFD2BE805C84C882972A7A8483292888A66ECD37` |
+| `03_gis_and_data/phase2_local_gis/本轮本地数据处理与GIS分析结果.xlsx` | 44374 | `54AB2C7569CB0C4BBB843EDB14735A12074C070DEEE481B6B074517986BB3658` |
+| `03_gis_and_data/phase2_local_gis/海珠坐标多证据批量核验明细.csv` | 130173 | `13A4DA750DD52327286477D15A4DCF57A7DCBC2CDCF18F55BDEB1775C11FA547` |
+| `03_gis_and_data/phase2_local_gis/海珠坐标结论分层_街道可用vs点位可用.csv` | 158370 | `E18EF8A1FD5BBCE5DB8D631651B524CF7E27500B171F4237DF32A8F85C06CAC5` |
+| `03_gis_and_data/phase2_local_gis/给ChatGPT验收用简明报告.md` | 12083 | `89B05FABE4F111C3041361900BBDD82DDEBBC5FA8D2070A193CA13AAEB7048D5` |
+| `03_gis_and_data/phase2_local_gis/统一缺口与行动台账.xlsx` | 22619 | `E3A81C3B5914D057194ED4E4513668BE842650E3C35DD6DE813C5E49E4A3F41C` |
+| `03_gis_and_data/phase2_local_gis/输入输出SHA256清单.csv` | 6410 | `86EBEEFDABC09D975DA2D6518EE65E64DD5B4BA91786CF732203DBB7D9E6B6EE` |
+| `05_deliverables/final_report/广州市AI养老场景与政府试点推广决策_最终研究报告.md` | 67279 | `1B91E5A4D93D806FC843478779B95354235EAF63F40D8DE24E0BF7396F42676C` |
+| `05_deliverables/final_report/广州市AI养老场景与政府试点推广决策_最终研究报告.pdf` | 856445 | `75355FD3C10281B5C9A6BCBA997B860791ED30C143EF880A4726360D53A9309B` |
+| `05_deliverables/history/guangzhou_ai_eldercare_brief_20261017_早期版.zip` | 59577 | `C6C2ECC725F03DF8A7EDB2FF1E1E0F5C9125E9B30A34F913D767FA9443A113B0` |
+| `05_deliverables/history/广州市AI养老场景与政府试点推广决策_最终研究报告_一致性修补版_历史.pdf` | 857508 | `D87A18AC314F134901E7E9D1F234F5DFFD3B50A2C5AC314141B2A8A942914C1B` |
+| `05_deliverables/history/广州市AI养老场景与政府试点推广决策_最终研究报告_修正前历史版.pdf` | 298087 | `6D68469BA5D677F41C17E10D9447EA2350E8BB34A90ED42C284C236CB64FC23A` |
+| `05_deliverables/integration_review/平安通采购金额口径勘误_20261017.md` | 2293 | `1191FEB626387A756E3C1E0B0A93FE63AA64DB67D153D72D5F7197166FC57B16` |
+| `05_deliverables/leader_brief_20261017/guangzhou_ai_eldercare_brief_20261017.pdf` | 36544 | `EEB63423C2C9FE653D8D94E17D638C8080E3CB05E582FEF4DA4A53E815A522B9` |
+| `05_deliverables/leader_brief_20261017/guangzhou_ai_eldercare_brief_optimized.docx` | 46323 | `2AC7A17DB19F4A3242E641ABB0323FDC903F87B153D478CBE7AE708B62F85F77` |
+| `05_deliverables/leader_brief_20261017/guangzhou_ai_eldercare_brief_optimized.zip` | 68570 | `377BD332B5BA6CAD3976A11E71718D5E913701A9A444F84C937AA66320F6FDD4` |
+| `05_deliverables/leader_brief_20261017/广州市AI养老研究阶段性报告.pdf` | 43089 | `8E3CEB46BAFB32E59D140799C9940E9F1817CFBCBE3D9C2812447D9F2B702F03` |
+| `05_deliverables/packages/广州市AI养老研究20261020.zip` | 1085620 | `4BC0AF760571A5E5B38559C13B5D981865715DE80AAA0799BD351E648EF51CAC` |
+| `05_deliverables/packages/广州市AI养老研究_最终成果包_20261020.zip` | 2926764 | `4FB7E82B22AE6FC92FB147D360EB826822C2DE495FEBE36D6881DCC5FF7B8E57` |
+| `05_deliverables/reports/广州市AI养老研究_阶段工作报告_20261016.pdf` | 457493 | `AC074EA66D7B1FDFDE33ADF92DE06AB3DEDE483025DDA86AF57143CDD548D725` |
+| `05_deliverables/组长汇报方案_增量修订版_20261017.md` | 17602 | `462D142302D3B0960D9F0E1407587DBFC6E61903492F43C6AEF75A5DEDE10039` |
